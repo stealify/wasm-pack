@@ -1,3 +1,6 @@
+## Fork
+Downloads the specified version of wasm-pack so that you can install it via npm 
+
 <div align="center">
 
   <h1>📦✨  wasm-pack</h1>

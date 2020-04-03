@@ -2,13 +2,14 @@
   "name": "wasm-pack",
   "version": "0.9.1",
   "description": "📦✨ your favorite rust -> wasm workflow tool!",
-  "main": "binary.js",
+  "type": "module",
+  "main": "wasm-pack.js",
   "scripts": {
-    "postinstall": "node ./install.js",
-    "preuninstall": "node ./uninstall.js"
+    "postinstall": "node --input-type=module --eval 'import {wasmPack} from \"./wasm-pack.js\"; wasmPack.install()'",
+    "preuninstall": "node --input-type=module --eval 'import {wasmPack} from \"./wasm-pack.js\"; wasmPack.uninstall()'"
   },
   "bin": {
-    "wasm-pack": "./run.js"
+    "wasm-pack": "./bin/wasm-pack"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,13 @@
     "url": "https://github.com/rustwasm/wasm-pack/issues"
   },
   "homepage": "https://github.com/rustwasm/wasm-pack#readme",
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  },
   "dependencies": {
-    "binary-install": "0.0.1"
+    "axios": "^0.19.2",
+    "mkdirp": "^0.5.3",
+    "rimraf": "^3.0.2",
+    "tar": "^5.0.5"
   }
 }
